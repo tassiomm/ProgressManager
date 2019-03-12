@@ -14,7 +14,7 @@ progManager.start()
 
 ## Progress Info
 
-`ProgressInfo` is the model that defines the information necessary for the `ProgressManager`
+`ProgressInfo` is the model that defines the information necessary for d `ProgressManager`
 
 ```swift
 struct ProgressInfo {
@@ -28,7 +28,35 @@ struct ProgressInfo {
 In this model you define:
 - `text` is used to update the label
 - `startTime` works together with `timeleft`. The `timeleft` is the amount of time (in seconds) left to finish the progress view in relation to `startTime`
-- `maxTime` is maximium total time (in seconds) of the progress view
+- `maxTime` is maximum total time (in seconds) of the progress view
 
-See figure:
 ![ProgressInfo](progressManager_example_fig.png)
+
+## Personalizing
+
+You can personalize the bar with things such as:
+- direction: defines if the bar is increasing or decreasing
+- smoothness: defines how smooth the progress bar will increasing or decrease
+- shouldResetAutomatically: if the progress bar will restart automatically after is finished
+
+```swift
+progManager.smoothness = .high
+progManager.direction = .increasing
+progManager.shouldResetAutomatically = false
+```
+
+### Note
+
+If `shouldResetAutomatically` is set as `true`, is important that you set the delegate for the manager
+
+```swift
+progManager.delegate = self
+```
+
+Then, use the method `progressInfo(forProgressManager:)` to update the new `ProgressInfo` for `ProgressManager`
+
+```swift
+func progressInfo(forProgressManager progressManager: ProgressManager) -> ProgressInfo {
+return ProgressInfo(text: getRandomStringNumber(), startTime: Date(), timeleft: 9.0, maxTime: 10.0)
+}
+```
