@@ -32,16 +32,16 @@ In this model you define:
 - `startTime` works together with `timeleft`. The `timeleft` property is the amount of time (in seconds) left to finish the progress view in relation to `startTime`
 - `maxTime` is maximum total time (in seconds) of the progress view
 
-#### NOTE: If `timeleft` is bigger than maxTime or less than 0, it will not work.
+#### NOTE: If `timeleft` is bigger than maxTime or less than 0, the progress manager won't function properly.
 
 ![ProgressInfo](progressManager_example_fig.png)
 
 ## Personalizing
 
 You can perfome some personalizations, such as:
-- **direction**: defines if the bar progress is increasing or decreasing
-- **smoothness**: defines how smooth the progress bar will increasing or decrease
-- **shouldRestartAutomatically**: flag to indicate if the progress bar should restart automatically after is finished
+- **direction**: defines if the bar progress is increasing or decreasing;
+- **smoothness**: defines how smooth the progress bar will increase or decrease;
+- **shouldRestartAutomatically**: flag to indicate if the progress bar should restart automatically after is finished (a loop).
 
 ```swift
 progressManager.smoothness = .high

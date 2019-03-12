@@ -28,7 +28,7 @@ class ProgressManager {
     enum ProgressSmoothness: Int {
         case veryLow = 10
         case low = 100
-        case medium = 500
+        case medium = 550
         case high = 1000
         case veryHigh = 10000
     }
