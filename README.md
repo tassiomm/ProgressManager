@@ -1,6 +1,8 @@
 #  Progress Manager
 A manager that receives a UILabel and a UIProgressView and updates their status accordingly to informations set on Progress Info
 
+Ideal for token generation based on time (TOTP)
+
 ---
 ## Basic Usage
 
@@ -37,17 +39,17 @@ In this model you define:
 You can personalize the bar with things such as:
 - direction: defines if the bar is increasing or decreasing
 - smoothness: defines how smooth the progress bar will increasing or decrease
-- shouldResetAutomatically: if the progress bar will restart automatically after is finished
+- shouldRestartAutomatically: if the progress bar will restart automatically after is finished
 
 ```swift
 progManager.smoothness = .high
 progManager.direction = .increasing
-progManager.shouldResetAutomatically = false
+progManager.shouldRestartAutomatically = true
 ```
 
 ### Note
 
-If `shouldResetAutomatically` is set as `true`, is important that you set the delegate for the manager
+If `shouldRestartAutomatically` is set as `true`, is important that you set the delegate for the manager, otherwise the start will not work properly
 
 ```swift
 progManager.delegate = self
@@ -57,6 +59,14 @@ Then, use the method `progressInfo(forProgressManager:)` to update the new `Prog
 
 ```swift
 func progressInfo(forProgressManager progressManager: ProgressManager) -> ProgressInfo {
-return ProgressInfo(text: getRandomStringNumber(), startTime: Date(), timeleft: 9.0, maxTime: 10.0)
+    return ProgressInfo(text: getRandomStringNumber(), startTime: Date(), timeleft: 9.0, maxTime: 10.0)
 }
+```
+
+#### OR
+
+Your can restart the progressView by will using
+
+```swift
+progManager.reset(withInfo:)
 ```
