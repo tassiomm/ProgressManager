@@ -47,7 +47,7 @@ class ProgressManager {
     private var progressView: UIProgressView
     private var progressTimer: Timer?
     
-    var shouldResetAutomatically: Bool = true
+    var shouldRestartAutomatically: Bool = true
     var delegate: ProgressManagerDelegate?
     
     private init() {
@@ -72,7 +72,7 @@ class ProgressManager {
         progressTimer?.invalidate()
     }
     
-    func reset(withInfo info: ProgressInfo) {
+    func restart(withInfo info: ProgressInfo) {
         stop()
         progressInfo = info
         start()
@@ -98,7 +98,7 @@ class ProgressManager {
                 self.progressTimer?.invalidate()
                 self.delegate?.progressDidFinish(forProgressManager: self)
                 
-                if self.shouldResetAutomatically,
+                if self.shouldRestartAutomatically,
                     let info = self.delegate?.progressInfo(forProgressManager: self) {
                     self.progressInfo = info
                     self.start()

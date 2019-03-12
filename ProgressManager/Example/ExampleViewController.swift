@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         progManager.smoothness = .high
         progManager.direction = .increasing
-        progManager.shouldResetAutomatically = false
+        progManager.shouldRestartAutomatically = true
         progManager.delegate = self
         
         progManager.start()
@@ -42,8 +42,9 @@ extension ViewController: ProgressManagerDelegate {
     }
     
     func progressDidFinish(forProgressManager progressManager: ProgressManager) {
-        print(":: Did finish progress ::")
-        progressManager.reset(withInfo: ProgressInfo(text: getRandomStringNumber(), startTime: Date(), timeleft: 5.0, maxTime: 10.0))
+        // This delegate method is called when the progress bar
+            // finishes "filling" (for increasing), or ...
+            // finishes "emptying" (for decreasing)
     }
 }
 
