@@ -16,7 +16,7 @@ progManager.start()
 
 ## Progress Info
 
-`ProgressInfo` is the model that defines the information necessary for d `ProgressManager`
+`ProgressInfo` is the model that defines the information necessary for `ProgressManager`
 
 ```swift
 struct ProgressInfo {
@@ -29,8 +29,10 @@ struct ProgressInfo {
 
 In this model you define:
 - `text` is used to update the label
-- `startTime` works together with `timeleft`. The `timeleft` is the amount of time (in seconds) left to finish the progress view in relation to `startTime`
+- `startTime` works together with `timeleft`. The `timeleft` property is the amount of time (in seconds) left to finish the progress view in relation to `startTime`
 - `maxTime` is maximum total time (in seconds) of the progress view
+
+#### NOTE: If `timeleft` is bigger than maxTime or less than 0, it will not work.
 
 ![ProgressInfo](progressManager_example_fig.png)
 
@@ -47,15 +49,15 @@ progManager.direction = .increasing
 progManager.shouldRestartAutomatically = true
 ```
 
-### Note
+### IMPORTANT
 
-If `shouldRestartAutomatically` is set as `true`, is important that you set the delegate for the manager, otherwise the start will not work properly
+If `shouldRestartAutomatically` is set as `true`, is important that you set the delegate for the manager, otherwise the it will NOT work.
 
 ```swift
 progManager.delegate = self
 ```
 
-Then, use the method `progressInfo(forProgressManager:)` to update the new `ProgressInfo` for `ProgressManager`
+Then, use the `ProgressManagerDelegate` protocol method `progressInfo(forProgressManager:)` to update the new `ProgressInfo` for `ProgressManager`
 
 ```swift
 func progressInfo(forProgressManager progressManager: ProgressManager) -> ProgressInfo {
@@ -68,5 +70,5 @@ func progressInfo(forProgressManager progressManager: ProgressManager) -> Progre
 Your can restart the progressView by will using
 
 ```swift
-progManager.reset(withInfo:)
+progManager.restart(withInfo:)
 ```
