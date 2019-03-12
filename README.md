@@ -51,7 +51,7 @@ progManager.shouldRestartAutomatically = true
 
 ### IMPORTANT
 
-If `shouldRestartAutomatically` is set as `true`, is important that you set the delegate for the manager, otherwise the it will NOT work.
+If `shouldRestartAutomatically` is set as `true`, is important that you set the delegate for the manager, otherwise it will NOT work.
 
 ```swift
 progManager.delegate = self
