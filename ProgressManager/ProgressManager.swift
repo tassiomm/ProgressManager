@@ -33,9 +33,10 @@ class ProgressManager {
         case veryHigh = 10000
     }
     
-    // MARK: - Constants
     var direction: ProgressDirection = .increasing
-    var smoothness: ProgressSmoothness = .veryLow
+    var smoothness: ProgressSmoothness = .high
+    var shouldRestartAutomatically: Bool = true
+    var delegate: ProgressManagerDelegate?
     
     private var partsPerSecond: Int {
         return smoothness.rawValue
@@ -46,9 +47,6 @@ class ProgressManager {
     private var label: UILabel
     private var progressView: UIProgressView
     private var progressTimer: Timer?
-    
-    var shouldRestartAutomatically: Bool = true
-    var delegate: ProgressManagerDelegate?
     
     private init() {
         label = UILabel()
