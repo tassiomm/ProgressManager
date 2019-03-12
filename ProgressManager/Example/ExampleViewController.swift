@@ -15,12 +15,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         setupPM()
     }
     
     private func setupPM(){
-        let progressInfo = ProgressInfo(text: "111111", startTime: Date(), timeleft: 10.0, maxTime: 10.0)
+        let progressInfo = ProgressInfo(text: getRandomStringNumber(), startTime: Date(), timeleft: 10.0, maxTime: 10.0)
         let progManager = ProgressManager(progressInfo: progressInfo, label: label, progressView: progressView)
         
         progManager.smoothness = .high

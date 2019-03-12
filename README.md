@@ -9,9 +9,9 @@ Ideal for token generation based on time (TOTP)
 You can set the label and progressView you want to update along with the necessary info
 
 ```swift
-let progressInfo = ProgressInfo(text: "000 000", startTime: Date(), timeleft: 10.0, maxTime: 10.0)
-let progManager = ProgressManager(progressInfo: progressInfo, label: label, progressView: progressView)
-progManager.start()
+let progressInfo = ProgressInfo(text: "228538", startTime: Date(), timeleft: 10.0, maxTime: 10.0)
+let progressManager = ProgressManager(progressInfo: progressInfo, label: label, progressView: progressView)
+progressManager.start()
 ```
 
 ## Progress Info
@@ -38,15 +38,15 @@ In this model you define:
 
 ## Personalizing
 
-You can personalize the bar with things such as:
-- direction: defines if the bar is increasing or decreasing
-- smoothness: defines how smooth the progress bar will increasing or decrease
-- shouldRestartAutomatically: if the progress bar will restart automatically after is finished
+You can perfome some personalizations, such as:
+- **direction**: defines if the bar progress is increasing or decreasing
+- **smoothness**: defines how smooth the progress bar will increasing or decrease
+- **shouldRestartAutomatically**: flag to indicate if the progress bar should restart automatically after is finished
 
 ```swift
-progManager.smoothness = .high
-progManager.direction = .increasing
-progManager.shouldRestartAutomatically = true
+progressManager.smoothness = .high
+progressManager.direction = .increasing
+progressManager.shouldRestartAutomatically = true
 ```
 
 ### IMPORTANT
@@ -54,14 +54,14 @@ progManager.shouldRestartAutomatically = true
 If `shouldRestartAutomatically` is set as `true`, is important that you set the delegate for the manager, otherwise it will NOT work.
 
 ```swift
-progManager.delegate = self
+progressManager.delegate = self
 ```
 
-Then, use the `ProgressManagerDelegate` protocol method `progressInfo(forProgressManager:)` to update the new `ProgressInfo` for `ProgressManager`
+Then, use the `ProgressManagerDelegate` protocol method `progressInfo(forProgressManager:)` to update the new `ProgressInfo`
 
 ```swift
 func progressInfo(forProgressManager progressManager: ProgressManager) -> ProgressInfo {
-    return ProgressInfo(text: getRandomStringNumber(), startTime: Date(), timeleft: 9.0, maxTime: 10.0)
+    return ProgressInfo(text: "234534", startTime: Date(), timeleft: 9.0, maxTime: 10.0)
 }
 ```
 
@@ -70,5 +70,5 @@ func progressInfo(forProgressManager progressManager: ProgressManager) -> Progre
 Your can restart the progressView by will using
 
 ```swift
-progManager.restart(withInfo:)
+progressManager.restart(withInfo:)
 ```
